@@ -1,96 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI App Builder - Idea to App Store in Days</title>
+    
+    <!-- Chosen Palette: Warm Neutrals (Slate) with a strong Blue accent for action items. -->
+    <!-- Application Structure Plan: The SPA is a narrative-driven landing page, mirroring the structure from the GTM plan. This linear flow is designed for a single purpose: conversion. It hooks the user with a powerful promise (Hero), validates their frustration (Problem), presents the ideal solution (Solution), creates urgency with a compelling deal (Offer), and builds trust with a personal story (Founder). This structure is the most effective way to turn a strategic document into a lead-generation engine. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: GTM Plan's Landing Page Blueprint -> Goal: Convert visitors to leads -> Viz/Method: A single-page application. -> Justification: Focuses user attention on a single path to conversion ("Request Early Access").
+        - Report Info: Product Features -> Goal: Explain the "how" -> Viz/Method: A styled list with icons (Unicode characters) in a multi-column layout. -> Justification: Highly scannable and easy to digest complex features quickly.
+        - Report Info: Abstract Product Concept -> Goal: Make the product feel tangible -> Viz/Method: HTML/CSS-based animated mockup of the product UI in the Hero section. -> Justification: Provides a dynamic, visual hook that explains the product faster than words alone.
+        - Report Info: The "Earlyvangelist Offer" -> Goal: Drive immediate action -> Viz/Method: A visually distinct, highlighted pricing card. -> Justification: Draws the user's eye to the call-to-action and emphasizes the exclusivity of the offer.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #1e293b; /* slate-800 */
+        }
+        .blinking-cursor {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #38bdf8; } /* sky-400 */
+        }
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+    </style>
   </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="absolute top-0 left-0 right-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-slate-900">AI App Builder</div>
+                <a href="#offer" class="hidden sm:inline-block bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+                    Request Early Access
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-32">
+            <div class="absolute inset-0 bottom-1/4 bg-slate-100"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight">
+                    Go from Idea to App Store in Days, Not Months.
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-600">
+                    Our AI agent designs, builds, and deploys custom mobile and desktop applications from a simple prompt.
+                </p>
+                <div class="mt-8 flex justify-center">
+                    <a href="#offer" class="bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg hover:bg-blue-700 transition-transform hover:scale-105">
+                        Request Early Access
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Visual Mockup -->
+            <div class="relative max-w-5xl mx-auto mt-16 lg:mt-20 px-4">
+                <div class="bg-slate-900 rounded-xl shadow-2xl overflow-hidden">
+                    <div class="h-8 bg-slate-800 flex items-center px-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-400 mr-2"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="flex flex-col md:flex-row h-[350px] md:h-[400px]">
+                        <div class="w-full md:w-1/2 bg-slate-900 p-4 font-mono text-sm text-slate-300 overflow-y-auto">
+                            <p><span class="text-green-400">&gt;</span> specify app: "A simple photo sharing app like Instagram's core feature"</p>
+                            <p class="mt-2 text-sky-400">[INFO] Understanding requirements...</p>
+                            <p class="text-sky-400">[INFO] Clarifying question: What data do you need for a user profile?</p>
+                            <p><span class="text-green-400">&gt;</span> reply: "username, profile picture, bio"</p>
+                            <p class="mt-2 text-sky-400">[OK] Requirements understood.</p>
+                            <p class="mt-2 text-yellow-400">[BUILD] Creating user authentication screens...</p>
+                            <p class="text-yellow-400">[BUILD] Setting up database schema `users`...</p>
+                            <p class="text-yellow-400">[BUILD] Writing API endpoint for user login...</p>
+                            <p class="text-yellow-400">[BUILD] Generating UI for photo feed...</p>
+                            <p class="text-green-400">[DONE] Build complete. Preview is ready.</p>
+                            <p><span class="text-green-400">&gt;</span> <span class="blinking-cursor border-r-2"></span></p>
+                        </div>
+                        <div class="w-full md:w-1/2 bg-white p-4 flex justify-center items-center border-t md:border-t-0 md:border-l border-slate-700">
+                            <div class="w-full max-w-[200px] aspect-[9/16] bg-slate-100 rounded-2xl shadow-inner-lg p-2 flex flex-col">
+                                <div class="h-6 bg-slate-200 rounded-t-lg flex items-center justify-between px-2">
+                                    <span class="text-xs font-bold text-slate-600">9:41</span>
+                                    <div class="flex items-center space-x-1">
+                                         <span class="text-xs font-bold text-slate-600">LTE</span>
+                                         <span class="text-xs font-bold text-slate-600">🔋</span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow bg-white pt-2">
+                                    <div class="flex items-center px-2 pb-2 border-b border-slate-200">
+                                        <div class="w-8 h-8 rounded-full bg-slate-300"></div>
+                                        <div class="ml-2 text-sm font-bold text-slate-800">Your App</div>
+                                    </div>
+                                    <div class="p-2 space-y-2">
+                                        <div class="w-full h-28 bg-slate-300 rounded-md"></div>
+                                        <div class="flex items-center">
+                                            <div class="w-6 h-6 rounded-full bg-slate-300"></div>
+                                            <div class="ml-2 h-3 w-20 bg-slate-300 rounded"></div>
+                                        </div>
+                                         <div class="w-full h-28 bg-slate-300 rounded-md"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section id="problem" class="py-20 sm:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Tired of the traditional app development nightmare?
+                    </h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">
+                        Stop burning your two most valuable resources: time and money.
+                    </p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-5xl">💸</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-900">Get quoted $50,000+ for a simple MVP?</h3>
+                        <p class="mt-2 text-slate-600">For founders, that's a bet-the-company expense before you've even validated your idea.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-5xl">⏳</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-900">Waste 6-12 months on development?</h3>
+                        <p class="mt-2 text-slate-600">For makers and entrepreneurs, that's a dozen other ideas you didn't get to test.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <div class="text-5xl">🤯</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-900">Struggle with unreliable freelancers?</h3>
+                        <p class="mt-2 text-slate-600">For small businesses, it's a management headache that pulls you away from your actual work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section id="solution" class="py-20 sm:py-24 bg-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                        Meet Your New AI Co-founder.
+                    </h2>
+                </div>
+                <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-6">
+                        <div class="text-3xl text-blue-600">💬</div>
+                        <h3 class="mt-4 text-lg font-bold">Conversational Build</h3>
+                        <p class="mt-1 text-slate-600">Simply chat with our AI. Describe your app's vision, and it will ask the right questions to turn your idea into a detailed specification.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-3xl text-blue-600">"▍"</div>
+                        <h3 class="mt-4 text-lg font-bold">Transparent Process</h3>
+                        <p class="mt-1 text-slate-600">No black boxes. Watch in a live log as the AI builds your database, writes the code, and wires everything together.</p>
+                    </div>
+                    <div class="p-6">
+                         <div class="text-3xl text-blue-600">📱</div>
+                        <h3 class="mt-4 text-lg font-bold">Live Interactive Preview</h3>
+                        <p class="mt-1 text-slate-600">Instantly test drive your app in an interactive emulator. See your requested changes appear in real-time.</p>
+                    </div>
+                    <div class="p-6">
+                         <div class="text-3xl text-blue-600">🚀</div>
+                        <h3 class="mt-4 text-lg font-bold">One-Click Deployment</h3>
+                        <p class="mt-1 text-slate-600">Go from concept to a real, installable app (`.apk`/`.ipa`) on your phone with a single click.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing / Offer Section -->
+        <section id="offer" class="py-20 sm:py-24">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Become a Founding Member.
+                </h2>
+                <div class="mt-10 bg-white rounded-2xl shadow-2xl p-8 lg:p-12 border-4 border-blue-500 transform scale-100">
+                    <p class="text-sm font-bold uppercase text-blue-600 tracking-wider">Limited to 10 members</p>
+                    <p class="mt-6 text-slate-600">Get a <span class="font-bold text-slate-900">Founding Member lifetime plan</span> for just</p>
+                    <p class="mt-2">
+                        <span class="text-6xl font-extrabold text-slate-900">$49</span>
+                        <span class="text-xl font-medium text-slate-500">/month</span>
+                    </p>
+                    <p class="mt-1 text-slate-500">(50% off our standard $99/month price)</p>
+                    
+                    <ul class="mt-8 text-left space-y-3 max-w-sm mx-auto">
+                        <li class="flex items-start">
+                            <span class="text-green-500 text-2xl mr-3">✔</span>
+                            <span class="text-slate-700">Private Slack channel with the founder for direct support.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 text-2xl mr-3">✔</span>
+                            <span class="text-slate-700">Priority voting rights on our product roadmap.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 text-2xl mr-3">✔</span>
+                            <span class="text-slate-700">A personal 1-on-1 session to help build your first app.</span>
+                        </li>
+                    </ul>
+
+                    <button id="ctaButton" class="mt-10 w-full bg-blue-600 text-white font-bold text-lg px-8 py-4 rounded-xl shadow-lg hover:bg-blue-700 transition-transform hover:scale-105">
+                        Request Early Access
+                    </button>
+                    <p class="mt-4 text-xs text-slate-500">This offer will never be repeated.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Section -->
+        <section id="founder" class="py-20 sm:py-24 bg-slate-100">
+             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center bg-white rounded-xl shadow-xl p-8 md:flex md:items-center md:text-left">
+                    <img src="https://placehold.co/150x150/e2e8f0/334155?text=M.I." alt="Mikhail Ilin" class="w-24 h-24 md:w-36 md:h-36 rounded-full mx-auto md:mx-0 md:mr-8 flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/150x150/e2e8f0/334155?text=MI';">
+                    <div>
+                         <p class="text-slate-700 leading-relaxed">
+                             "My name is Mikhail Ilin, and I've been a web developer for 15 years. In all that time, I never built a mobile app because, like you, I knew it was too complex and expensive. I believe there are thousands of world-changing ideas trapped in people's minds simply because of that technical barrier. I'm building this to change that.
+                             <br><br>
+                             To my first 10 customers: you are my co-founders in this mission. I'm not just asking you to use a product; I'm asking you to help me build it. In return, I personally guarantee I will do everything I can to make this real for you. If I can't deliver, you get your money back. No questions asked."
+                         </p>
+                         <p class="mt-4 font-bold text-slate-900">Mikhail Ilin</p>
+                         <p class="text-sm text-slate-500">Founder, AI App Builder</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm">
+            <p>&copy; 2025 AI App Builder. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Modal -->
+    <div id="modal" class="modal fixed inset-0 bg-slate-900 bg-opacity-75 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+        <div id="modal-content" class="bg-white rounded-xl shadow-2xl p-8 w-full max-w-md transform -translate-y-10 transition-transform duration-300">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-900">Request Early Access</h3>
+                    <p class="mt-1 text-slate-600">Join the waitlist to become a Founding Member.</p>
+                </div>
+                <button id="closeModalButton" class="text-slate-400 hover:text-slate-600 text-3xl">&times;</button>
+            </div>
+            <div id="form-container" class="mt-6">
+                <form id="waitlist-form">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700">Email Address</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="you@example.com">
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+                            Claim My Founder's Spot
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div id="success-message" class="hidden text-center py-8">
+                 <div class="text-6xl">🎉</div>
+                 <h3 class="mt-4 text-2xl font-bold text-slate-900">You're on the list!</h3>
+                 <p class="mt-2 text-slate-600">Thank you for your interest. We'll be in touch soon with next steps.</p>
+                 <button id="successCloseButton" class="mt-6 bg-slate-200 text-slate-800 font-semibold px-6 py-2 rounded-lg hover:bg-slate-300">Close</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctaButton = document.getElementById('ctaButton');
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            const closeModalButton = document.getElementById('closeModalButton');
+            const successCloseButton = document.getElementById('successCloseButton');
+            const waitlistForm = document.getElementById('waitlist-form');
+            const formContainer = document.getElementById('form-container');
+            const successMessage = document.getElementById('success-message');
+
+            const openModal = () => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modalContent.classList.remove('-translate-y-10');
+            };
+
+            const closeModal = () => {
+                modal.classList.add('opacity-0');
+                modalContent.classList.add('-translate-y-10');
+                setTimeout(() => {
+                    modal.classList.add('pointer-events-none');
+                    // Reset form for next time
+                    formContainer.classList.remove('hidden');
+                    successMessage.classList.add('hidden');
+                    waitlistForm.reset();
+                }, 300);
+            };
+
+            // Open modal from main CTA
+            if(ctaButton) {
+                ctaButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal();
+                });
+            }
+
+            // Also open from any link pointing to #offer
+            document.querySelectorAll('a[href="#offer"]').forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    openModal();
+                });
+            });
+
+            // Close modal events
+            closeModalButton.addEventListener('click', closeModal);
+            successCloseButton.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "Escape") {
+                    closeModal();
+                }
+            });
+
+            // Handle form submission
+            waitlistForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // In a real app, you would send this to a server.
+                // Here, we just show a success message.
+                console.log('Form submitted with email:', document.getElementById('email').value);
+                formContainer.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+            });
+        });
+    </script>
   </body>
 </html>
